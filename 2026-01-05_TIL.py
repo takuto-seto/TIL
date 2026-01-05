@@ -28,29 +28,44 @@
 
 #例外処理（Exception Handling）
 
-def safe_division():
-    try:
-        # ユーザーに入力を促す
-        num_str = input("数字を入力してください: ")
-        number = int(num_str) # ここで「あ」などを入れるとエラーが発生する
+# def safe_division():
+#     try:
+#         # ユーザーに入力を促す
+#         num_str = input("数字を入力してください: ")
+#         number = int(num_str) # ここで「あ」などを入れるとエラーが発生する
         
-        result = 100 / number  # 0を入力すると「0除算エラー」が発生する
-        print(f"100 ÷ {number} = {result}")
+#         result = 100 / number  # 0を入力すると「0除算エラー」が発生する
+#         print(f"100 ÷ {number} = {result}")
         
-    except ValueError:
-        # 数字以外が入力された時の処理
-        print("エラー：数字以外が入力されました。数値を入れてください。")
+#     except ValueError:
+#         # 数字以外が入力された時の処理
+#         print("エラー：数字以外が入力されました。数値を入れてください。")
         
-    except ZeroDivisionError:
-        # 0が入力された時の処理
-        print("エラー：0で割ることはできません。")
+#     except ZeroDivisionError:
+#         # 0が入力された時の処理
+#         print("エラー：0で割ることはできません。")
         
-    except Exception as e:
-        # それ以外の想定外のエラー
-        print(f"予期せぬエラーが発生しました: {e}")
+#     except Exception as e:
+#         # それ以外の想定外のエラー
+#         print(f"予期せぬエラーが発生しました: {e}")
     
-    finally:
-        # エラーが起きても起きなくても実行される（後片付けなど）
-        print("処理を終了します。")
+#     finally:
+#         # エラーが起きても起きなくても実行される（後片付けなど）
+#         print("処理を終了します。")
 
-safe_division()
+# safe_division()
+
+
+#例外処理　課題
+def get_element_safely(my_list, index):
+    try:
+        # ここにリストから要素を取り出すコードを書く
+        return my_list[index]
+    except IndexError:
+        # 範囲外（IndexError）だった時の処理
+        return "エラー：指定されたインデックスは範囲外です。"
+
+# テスト
+data = ["a", "b", "c"]
+print(get_element_safely(data, 1))  # "b"
+print(get_element_safely(data, 5))  # エラーメッセージが出るようにしたい
